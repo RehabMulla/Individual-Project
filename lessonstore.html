@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.jsdelivr.net/npm/vue@2.7.10/dist/vue.js"> </script>
     <script src="items.js"></script>
-    <script src="style.css"></script>
+    <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
     <title>Vue.js School Lessons</title>
 </head>
@@ -21,8 +21,9 @@
         <main>
             <div v-if="showItem">
                 <div v-for="item in items">
+                    <div id="lessonbox">
             <figure>
-                <img v-bind:src="item.Image">
+                <img v-bind:src="item.Image" style="width:130px;height:110px;float:right;">
             </figure>
             <h2 v-text="item.subject"></h2>
             <!-- the double curly brackets is shorter version of 'v-text' moustache syntax (same thing)-->
@@ -32,6 +33,7 @@
             <button v-on:click="addToCart(item)">
                 Add to Cart
             </button>
+        </div>
         </div>
             <button v-on:click="showCheckout"><!-- 'cartItemCount' is used the same way as a data property. -->       
                 {{ cartItemCount }} <!-- add the cart icon -->
