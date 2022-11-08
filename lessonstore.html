@@ -13,5 +13,26 @@
 </head>
 
 <body>
+
+    <div id="app">
+        <header>
+            <h1 v-text="sitename"></h1>
+        </header>
+        <main>
+        </main>
+    </div>
+
+    <script type="text/javascript">
+        var webstore = new Vue({
+            el: '#app', // dont forget the comma
+            data: { //the data option
+                sitename: 'Vue.js Lessonstore', //the key 'sitename' matches the value of v-text earlier
+                    items: items,
+                
+                cart: [], //array to store items in shopping cart
+                showItem: true,
+            },
+        });
+    </script>
 </body>
 </html>
