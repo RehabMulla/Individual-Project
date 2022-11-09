@@ -1,11 +1,19 @@
+*{
+    margin: 0;
+}
+html, body, #wrapper {
+    width: 100%;
+    min-height: 100%;
+}
 #lessonbox {
-width: 300px;
-height: 200px;
+width: 320px;
+height: 220px;
 border: 5px solid black;
-padding: 10px;
+padding: 20px;
 margin: 10px;
 font-size: 15px;
 line-height: 1.1em;
 border-radius: 15px;
-display: inline-block;
+display: inline;
+float: left;
 }
