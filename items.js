@@ -5,16 +5,16 @@ let items = [
         location: "Dubai" , //em tag to emphasize the term irrisistible
         price: 2130,
         Image: "images/math.jpg",
-        availableInventory: 10, //was 5
+        availableInventory: 5, //was 5
         rating: 3
     },
     {
-        id: 101,
+        id: 102,
         subject: "Advanced Math",
         location: "Hendon" , //em tag to emphasize the term irrisistible
         price: 2160,
         Image: "images/advmath.jpg",
-        availableInventory: 10, //was 5
+        availableInventory: 5, //was 5
         rating: 4
     },
     {
@@ -23,7 +23,7 @@ let items = [
         location: "Abu Dhabi" , //em tag to emphasize the term irrisistible
         price: 1234,
         Image: "images/bio.jpg",
-        availableInventory: 15, //was 5
+        availableInventory: 5, //was 5
         rating: 2
     },
     {
@@ -32,7 +32,7 @@ let items = [
         location: "Mumbai" , //em tag to emphasize the term irrisistible
         price: 7040,
         Image: "images/phy.jpg",
-        availableInventory: 13, //was 5
+        availableInventory: 5, //was 5
         rating: 3
     },
     {
@@ -41,7 +41,7 @@ let items = [
         location: "Wakanda" , //em tag to emphasize the term irrisistible
         price: 1230,
         Image: "images/chem.jpg",
-        availableInventory: 45, //was 5
+        availableInventory: 5, //was 5
         rating: 2
     },
     {
@@ -50,7 +50,7 @@ let items = [
         location: "Dubai" , //em tag to emphasize the term irrisistible
         price: 5600,
         Image: "images/history.jpg",
-        availableInventory: 23, //was 5
+        availableInventory: 5, //was 5
         rating: 3
     },
     {
@@ -59,7 +59,7 @@ let items = [
         location: "Ajman" , //em tag to emphasize the term irrisistible
         price: 4560,
         Image: "images/eco.jpg",
-        availableInventory: 56, //was 5
+        availableInventory: 5, //was 5
         rating: 5
     },
     {
@@ -68,7 +68,7 @@ let items = [
         location: "Ukraine" , //em tag to emphasize the term irrisistible
         price: 4740,
         Image: "images/geo.jpg",
-        availableInventory: 21, //was 5
+        availableInventory: 5, //was 5
         rating: 4
     },
     {
@@ -77,7 +77,7 @@ let items = [
         location: "Maldives" , //em tag to emphasize the term irrisistible
         price: 7990,
         Image: "images/polsci.jpg",
-        availableInventory: 12, //was 5
+        availableInventory: 5, //was 5
         rating: 5
     },
     {
@@ -86,7 +86,7 @@ let items = [
         location: "Rome" , //em tag to emphasize the term irrisistible
         price: 10040,
         Image: "images/compsci.jpg",
-        availableInventory: 100, //was 5
+        availableInventory: 5, //was 5
         rating: 4
     },
     ]
