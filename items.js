@@ -1,3 +1,4 @@
+//jJSON file for all 10 lessons
 let items = [
     {
         id: 101,
