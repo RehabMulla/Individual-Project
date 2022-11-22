@@ -84,6 +84,23 @@
                     <input type="radio" id="letterZToA" value="letterZToA" v-model="sortMethod">
                     <label for="letterZToA">Subject: Z to A</label>
                 </p>
+                <p>
+                    <input type="radio" id="letterAToZLocation" value="letterAToZLocation" v-model="sortMethod">
+                    <label for="letterAToZ">Location: A to Z</label>
+                </p>
+                <!-- sorting lessons based on Z to A alphabetical order for subject -->
+                <p>
+                    <input type="radio" id="letterZToALocation" value="letterZToALocation" v-model="sortMethod">
+                    <label for="letterZToA">Location: Z to A</label>
+                </p>
+                <p><input type="radio" id="lowToHighInventory" value="lowToHighAvailableInventory" v-model="sortMethod">
+                    <label for="lowToHighPrice">AvailableInventory: Low to High</label>
+                </p>
+                <!-- sorting lessons based on high to low price -->
+                <p>
+                    <input type="radio" id="highToLowInventory" value="highToLowAvailableInventory" v-model="sortMethod">
+                    <label for="highToLowPrice">AvailableInventory: High to Low</label>
+                </p>
             </div>
 
             <!-- searching lesson in search bar -->
@@ -201,6 +218,114 @@
             <!-- sorting products from A to Z alphabetical order of subjects to display results -->
             <div v-else-if="sortMethod === 'letterZToA'">
                 <div v-for="item in sortedProductsZtoA">
+                    <div id="lessonbox">
+                        <figure>
+                            <img v-bind:src="item.Image" style="width:130px;height:110px;float:right;">
+                        </figure>
+                        <h4>Subject: {{item.subject}}</h4>
+                        <!-- the double curly brackets is shorter version of 'v-text' moustache syntax (same thing)-->
+                        <p>Location: {{item.location}}</p>
+                        <p>Price: {{item.price}}</p>
+                        <p>Available Lessons: {{item.availableInventory}}</p>
+                        <button v-on:click="addToCart(item)" class="button" id="cartbtn" v-if="canAddToCart(item)">
+                            Add to Cart
+                        </button>
+                        <br>
+                        <span v-if='item.availableInventory === cartCount(item.id)'>All out!</span>
+                        <span v-else-if="item.availableInventory - cartCount(item.id) < 5"> Only
+                            {{item.availableInventory - cartCount(item.id)}} left!</span>
+                        <span v-else>Buy now!</span>
+                        <div>
+                            <span v-for='n in item.rating'><i class="fa-solid fa-star"></i></span>
+                            <span v-for='n in 5-item.rating'><i class="fa-regular fa-star"></i></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div v-else-if="sortMethod === 'letterZToALocation'">
+                <div v-for="item in sortedProductsZtoALocation">
+                    <div id="lessonbox">
+                        <figure>
+                            <img v-bind:src="item.Image" style="width:130px;height:110px;float:right;">
+                        </figure>
+                        <h4>Subject: {{item.subject}}</h4>
+                        <!-- the double curly brackets is shorter version of 'v-text' moustache syntax (same thing)-->
+                        <p>Location: {{item.location}}</p>
+                        <p>Price: {{item.price}}</p>
+                        <p>Available Lessons: {{item.availableInventory}}</p>
+                        <button v-on:click="addToCart(item)" class="button" id="cartbtn" v-if="canAddToCart(item)">
+                            Add to Cart
+                        </button>
+                        <br>
+                        <span v-if='item.availableInventory === cartCount(item.id)'>All out!</span>
+                        <span v-else-if="item.availableInventory - cartCount(item.id) < 5"> Only
+                            {{item.availableInventory - cartCount(item.id)}} left!</span>
+                        <span v-else>Buy now!</span>
+                        <div>
+                            <span v-for='n in item.rating'><i class="fa-solid fa-star"></i></span>
+                            <span v-for='n in 5-item.rating'><i class="fa-regular fa-star"></i></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div v-else-if="sortMethod === 'letterAToZLocation'">
+                <div v-for="item in sortedProductsAtoZLocation">
+                    <div id="lessonbox">
+                        <figure>
+                            <img v-bind:src="item.Image" style="width:130px;height:110px;float:right;">
+                        </figure>
+                        <h4>Subject: {{item.subject}}</h4>
+                        <!-- the double curly brackets is shorter version of 'v-text' moustache syntax (same thing)-->
+                        <p>Location: {{item.location}}</p>
+                        <p>Price: {{item.price}}</p>
+                        <p>Available Lessons: {{item.availableInventory}}</p>
+                        <button v-on:click="addToCart(item)" class="button" id="cartbtn" v-if="canAddToCart(item)">
+                            Add to Cart
+                        </button>
+                        <br>
+                        <span v-if='item.availableInventory === cartCount(item.id)'>All out!</span>
+                        <span v-else-if="item.availableInventory - cartCount(item.id) < 5"> Only
+                            {{item.availableInventory - cartCount(item.id)}} left!</span>
+                        <span v-else>Buy now!</span>
+                        <div>
+                            <span v-for='n in item.rating'><i class="fa-solid fa-star"></i></span>
+                            <span v-for='n in 5-item.rating'><i class="fa-regular fa-star"></i></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div v-else-if="sortMethod === 'lowToHighAvailableInventory'">
+                <div v-for="item in ascendingInventory">
+                    <div id="lessonbox">
+                        <figure>
+                            <img v-bind:src="item.Image" style="width:130px;height:110px;float:right;">
+                        </figure>
+                        <h4>Subject: {{item.subject}}</h4>
+                        <!-- the double curly brackets is shorter version of 'v-text' moustache syntax (same thing)-->
+                        <p>Location: {{item.location}}</p>
+                        <p>Price: {{item.price}}</p>
+                        <p>Available Lessons: {{item.availableInventory}}</p>
+                        <button v-on:click="addToCart(item)" class="button" id="cartbtn" v-if="canAddToCart(item)">
+                            Add to Cart
+                        </button>
+                        <br>
+                        <span v-if='item.availableInventory === cartCount(item.id)'>All out!</span>
+                        <span v-else-if="item.availableInventory - cartCount(item.id) < 5"> Only
+                            {{item.availableInventory - cartCount(item.id)}} left!</span>
+                        <span v-else>Buy now!</span>
+                        <div>
+                            <span v-for='n in item.rating'><i class="fa-solid fa-star"></i></span>
+                            <span v-for='n in 5-item.rating'><i class="fa-regular fa-star"></i></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div v-else-if="sortMethod === 'highToLowAvailableInventory'">
+                <div v-for="item in descendingInventory">
                     <div id="lessonbox">
                         <figure>
                             <img v-bind:src="item.Image" style="width:130px;height:110px;float:right;">
@@ -432,6 +557,55 @@
                         if (a.subject < b.subject)
                             return 1;
                         if (a.subject > b.subject) {
+                            return -1;
+                            return 0;
+                        }
+                    }
+                    return productsArray.sort(compare);
+                },
+                sortedProductsZtoALocation() {
+                    let productsArray = this.items.slice(0);
+                    function compare(a, b) {
+                        if (a.location < b.location)
+                            return 1;
+                        if (a.location > b.location) {
+                            return -1;
+                            return 0;
+                        }
+                    }
+                    return productsArray.sort(compare);
+                },
+                sortedProductsAtoZLocation() {
+                    let productsArray = this.items.slice(0);
+                    function compare(a, b) {
+                        if (a.location > b.location)
+                            return 1;
+                        if (a.location < b.location) {
+                            return -1;
+                            return 0;
+                        }
+                    }
+                    return productsArray.sort(compare);
+                },
+                ascendingInventory() {
+                    let productsArray = this.items.slice(0);
+                    function compare(a, b) {
+                        if (a.availableInventory > b.availableInventory)
+                            return 1;
+                        if (a.availableInventory < b.availableInventory) {
+                            return -1;
+                            return 0;
+                        }
+                    }
+                    return productsArray.sort(compare);
+                },
+                //sort products from descending price order
+                descendingInventory() {
+                    let productsArray = this.items.slice(0);
+                    function compare(a, b) {
+                        if (a.availableInventory < b.availableInventory)
+                            return 1;
+                        if (a.availableInventory > b.availableInventory) {
                             return -1;
                             return 0;
                         }
